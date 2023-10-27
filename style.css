@@ -108,3 +108,26 @@ body {
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
+
+.icon-card-tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black background */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 1;
+    bottom: 100%;           /* positions the tooltip above the icon */
+    left: 50%;              /* starts the tooltip from the middle of the icon */
+    transform: translateX(-50%); /* centers the tooltip */
+    white-space: nowrap;    /* prevents the tooltip text from wrapping */
+}
+
+.icon-wrapper {
+    position: relative;
+    display: inline-block;  /* allows the tooltip to be positioned relative to the icon */
+}
+
+.icon-card:hover .icon-card-tooltip {
+    display: block;
+}
