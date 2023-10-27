@@ -1,3 +1,7 @@
+body {
+    font-size: 1rem;  
+}
+
 section {
     margin-bottom: ;
 }
@@ -64,7 +68,7 @@ section {
 }
 
 .navbar-brand {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
     color: white;
 }
@@ -78,13 +82,26 @@ section {
     color: white;
 }
 
+
+.navbar-toggler {
+    margin-left: auto;
+}
+
+.navbar-toggler:before {
+    content: "≡";
+    font-size: 48px;
+    line-height: 1;
+    color: white;
+}
+
+
 .skills {
     padding-top: 1rem;
     padding-bottom: 3rem;
 }
 
 #portfolio {
-    background-color: #c0d6e6;
+    background-color: #c2f5ff34;
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
