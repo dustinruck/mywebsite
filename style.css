@@ -1,11 +1,13 @@
-/* hero background image */
+section {
+    margin-bottom: ;
+}
+
 .bgimage {
     height:100vh;
     background: url('images/28973141-581C-4644-92A7-D782DF017344_1_105_c.jpeg');
     background-size:cover;
     position:relative;
 }
-/* text css above hero image*/
 .hero_title {
     font-size: 4.5rem;
 }
@@ -19,4 +21,70 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+}
+
+.imageAboutPage {
+    width: 75%;
+    padding-bottom: 4ch;
+    
+}
+
+.skills {
+    max-width: 50rem;
+    margin: auto;
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  
+  .skill-header {
+    margin-bottom: 1rem;
+  }
+  
+  .skills-wrapper img {
+    padding: 1.25rem;
+  }
+  
+  .icon {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .icon-card {
+    background-color: #dcdbdb;
+    border-radius: 25px;
+    box-shadow: 0 3px 10px var(--secondary-shadow);
+    padding: 20px;
+    margin: 10px;
+  }
+
+.navbarScroll.navbarDark {
+    background-color: black;
+    opacity: 0.6;
+    border-bottom-style: solid;
+}
+
+.navbar-brand {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+}
+
+.navbar-brand:hover {
+    color: #ffcc00;
+}
+
+.navbar-nav {
+    font-size: 1.0rem;
+    color: white;
+}
+
+.skills {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+#portfolio {
+    background-color: #c0d6e6;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
