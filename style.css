@@ -2,9 +2,7 @@ body {
     font-size: 1rem;  
 }
 
-section {
-    margin-bottom: ;
-}
+
 
 .bgimage {
     height:100vh;
@@ -65,6 +63,11 @@ section {
     background-color: black;
     opacity: 0.6;
     border-bottom-style: solid;
+}
+
+.navbarScroll.bg-scrolled {
+    background-color: rgba(0, 0, 0, 0.8); /* This will give it a semi-transparent black background */
+    transition: background-color 0.3s ease-in-out; /* Smooth transition effect */
 }
 
 .navbar-brand {
