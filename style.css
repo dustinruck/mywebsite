@@ -103,10 +103,10 @@ body {
     padding-bottom: 3rem;
 }
 
-#portfolio {
+body #portfolio {
     background-color: #c2f5ff34;
     padding-top: 5rem;
-    padding-bottom: 5rem;
+    /* padding-bottom: 5rem; */
 }
 
 .icon-wrapper {
@@ -170,7 +170,7 @@ body {
 footer {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    margin-top: auto;
+    margin-top: 100px;
     
 
 }
