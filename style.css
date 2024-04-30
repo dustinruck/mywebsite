@@ -109,6 +109,10 @@ body #portfolio {
     /* padding-bottom: 5rem; */
 }
 
+.card {
+    min-height: 575px;
+}
+
 .icon-wrapper {
     position: relative;
     display: inline-block;
