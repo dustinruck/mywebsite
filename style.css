@@ -1,21 +1,48 @@
+/* Define root variables for consistent theming */
+:root {
+    --primary-font: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Apply base font styles to all elements */
+* {
+    font-family: var(--primary-font);
+}
+
+/* Override font for specific elements in #about section */
+#about * {
+    font-family: inherit; /* Inherit from parent instead of using Outfit */
+}
+
+/* Rest of original styles */
 body {
-    font-size: 1rem;  
+    font-size: 1rem;
 }
 
-
-
-.bgimage {
-    height:100vh;
-    background: url('images/28973141-581C-4644-92A7-D782DF017344_1_105_c.jpeg');
-    background-size:cover;
-    position:relative;
+.navbar-brand {
+    font-size: 4rem;
+    font-weight: 600;
+    color: white;
 }
+
 .hero_title {
     font-size: 4.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
 }
+
+.bgimage {
+    height: 100vh;
+    background: #283c86;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #45a247, #283c86);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #45a247, #283c86); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    position: relative;
+}
+
 .hero_desc {
     font-size: 2rem;
 }
+
 .hero-text {
     text-align: center;
     position: absolute;
@@ -28,52 +55,72 @@ body {
 .imageAboutPage {
     width: 75%;
     padding-bottom: 4ch;
-    
 }
+
+.btn-grad {
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: inline-block;  /* Changed from block to inline-block */
+    text-decoration: none;  /* Added to remove underline */
+    background-image: linear-gradient(to right, #CC95C0 0%, #DBD4B4  51%, #CC95C0  100%);
+}
+
+.btn-grad:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
 
 .skills {
     max-width: 50rem;
     margin: auto;
     text-align: center;
     margin-top: 2.5rem;
-  }
-  
-  .skill-header {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+.skill-header {
     margin-bottom: 1rem;
-  }
-  
-  .skills-wrapper img {
+}
+
+.skills-wrapper img {
     padding: 1.25rem;
-  }
-  
-  .icon {
+}
+
+.icon {
     width: 6rem;
     height: 6rem;
-  }
+}
 
-  .icon-card {
+.icon-card {
     background-color: #dcdbdb;
     border-radius: 25px;
     box-shadow: 0 3px 10px var(--secondary-shadow);
     padding: 20px;
     margin: 10px;
-  }
+    position: relative;
+    z-index: 1;
+}
 
 .navbarScroll.navbarDark {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     opacity: 0.6;
     border-bottom-style: solid;
 }
 
 .navbarScroll.bg-scrolled {
-    background-color: rgba(0, 0, 0, 0.8); 
+    background-color: #477977;
+    opacity: 0.3;
     transition: background-color 0.3s ease-in-out;
-}
-
-.navbar-brand {
-    font-size: 4rem;
-    font-weight: bold;
-    color: white;
 }
 
 .navbar-brand:hover {
@@ -84,7 +131,6 @@ body {
     font-size: 1.0rem;
     color: white;
 }
-
 
 .navbar-toggler {
     margin-left: auto;
@@ -97,16 +143,9 @@ body {
     color: white;
 }
 
-
-.skills {
-    padding-top: 1rem;
-    padding-bottom: 3rem;
-}
-
 body #portfolio {
     background-color: #c2f5ff34;
     padding-top: 5rem;
-    /* padding-bottom: 5rem; */
 }
 
 .card {
@@ -130,53 +169,17 @@ body #portfolio {
     border-radius: 5px;
     white-space: nowrap;
     z-index: 10;
-    pointer-events: none; /* makes the text not interfere with any hover/click events */
+    pointer-events: none;
 }
 
 .icon-wrapper:hover .hover-text {
     display: block;
-}
-
-.icon-card {
-    position: relative;
-    z-index: 1;
-}
-
-.icon-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.hover-text {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    white-space: nowrap;
-    z-index: 10;
-    pointer-events: none; 
-}
-
-.icon-wrapper:hover .hover-text {
-    display: block;
-}
-
-.icon-card {
-    position: relative;
-    z-index: 1;
 }
 
 footer {
     padding-top: 3rem;
     padding-bottom: 3rem;
     margin-top: 100px;
-    
-
 }
 
 .footer-section {
@@ -189,7 +192,7 @@ footer {
 }
 
 .footer-section a:hover {
-    color: #ffa500; 
+    color: #ffa500;
 }
 
 .fab {
