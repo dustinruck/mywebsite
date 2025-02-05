@@ -39,6 +39,15 @@ body {
     position: relative;
 }
 
+.bgimage2 {
+    height: 100vh;
+    background: #283c86;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #344585, #283c86);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #344585, #283c86); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    position: relative;
+}
+
 .hero_desc {
     font-size: 2rem;
 }
@@ -76,7 +85,6 @@ body {
     /* background-position: right center; */
     color: #fff;
     text-decoration: none;
-    box-shadow: 0 0 15px #eee; /* Increased glow effect on hover */
 }
 
 
@@ -158,7 +166,7 @@ body {
 }
 
 body #portfolio {
-    background-color: #c2f5ff34;
+    background-color: #ffffff34;
     padding-top: 5rem;
 }
 
