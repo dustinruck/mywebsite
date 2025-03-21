@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive 3D Scatter Plot - BIOL 202 Example</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #plot {
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <div id="plot"></div>
+    <script>
+        function generateRandomData(points, scale=10) {
+            return Array.from({ length: points }, () => Math.random() * scale);
+        }
+
+        // Generate random data for demonstration (500 points)
+        const trace1 = {
+            x: generateRandomData(500, 50),
+            y: generateRandomData(500, 50),
+            z: generateRandomData(500, 50),
+            mode: 'markers',
+            marker: {
+                size: 5,
+                color: generateRandomData(500, 50),
+                colorscale: 'Viridis',
+                opacity: 0.8
+            },
+            type: 'scatter3d',
+            name: 'Group 1'
+        };
+
+        const trace2 = {
+            x: generateRandomData(500, 50),
+            y: generateRandomData(500, 50),
+            z: generateRandomData(500, 50),
+            mode: 'markers',
+            marker: {
+                size: 5,
+                color: generateRandomData(500, 50),
+                colorscale: 'Cividis',
+                opacity: 0.8
+            },
+            type: 'scatter3d',
+            name: 'Group 2'
+        };
+
+        const trace3 = {
+            x: generateRandomData(500, 50),
+            y: generateRandomData(500, 50),
+            z: generateRandomData(500, 50),
+            mode: 'markers',
+            marker: {
+                size: 5,
+                color: generateRandomData(500, 50),
+                colorscale: 'Inferno',
+                opacity: 0.8
+            },
+            type: 'scatter3d',
+            name: 'Group 3'
+        };
+
+        const layout = {
+            title: 'Interactive 3D Scatter Plot',
+            scene: {
+                xaxis: { title: 'X Axis' },
+                yaxis: { title: 'Y Axis' },
+                zaxis: { title: 'Z Axis' },
+            },
+            autosize: true
+        };
+
+        Plotly.newPlot('plot', [trace1, trace2, trace3], layout);
+    </script>
+</body>
+</html>
