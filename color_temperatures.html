@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Color Temperature Chart</title>
+  <!-- Include Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .chart-container {
+      width: 100%;
+      height: 600px;
+      margin-bottom: 40px;
+    }
+    .color-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .color-card {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .color-swatch {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .swatch-label {
+      background-color: rgba(255,255,255,0.7);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .color-info {
+      padding: 15px;
+      background-color: white;
+    }
+    .color-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .business-use {
+      font-style: italic;
+      margin-top: 8px;
+      font-size: 0.9em;
+    }
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lightbulb Color Temperature Variations</h1>
+  
+  <div class="chart-container">
+    <canvas id="tempChart"></canvas>
+  </div>
+  
+  <div class="color-cards" id="colorCards"></div>
+
+<script>
+// Approximate formula to convert color temperature (K) to RGB
+function colorTempToRGB(kelvin) {
+  const temp = Math.min(Math.max(kelvin, 1000), 40000) / 100;
+
+  let red, green, blue;
+
+  // Red
+  if (temp <= 66) {
+    red = 255;
+  } else {
+    red = 329.698727446 * Math.pow((temp - 60), -0.1332047592);
+    red = Math.min(Math.max(red, 0), 255);
+  }
+
+  // Green
+  if (temp <= 66) {
+    green = 99.4708025861 * Math.log(temp) - 161.1195681661;
+    green = Math.min(Math.max(green, 0), 255);
+  } else {
+    green = 288.1221695283 * Math.pow((temp - 60), -0.0755148492);
+    green = Math.min(Math.max(green, 0), 255);
+  }
+
+  // Blue
+  if (temp >= 66) {
+    blue = 255;
+  } else if (temp <= 19) {
+    blue = 0;
+  } else {
+    blue = 138.5177312231 * Math.log(temp - 10) - 305.0447927307;
+    blue = Math.min(Math.max(blue, 0), 255);
+  }
+
+  return `rgb(${Math.round(red)}, ${Math.round(green)}, ${Math.round(blue)})`;
+}
+
+// Expanded list of 20 color temperatures with business use cases
+const colorTemps = [
+  { temp: 1800, name: "Candlelight", business: "Upscale romantic restaurants" },
+  { temp: 2000, name: "Sunset/Sunrise", business: "Boutique hotel lobbies" },
+  { temp: 2200, name: "Very Warm", business: "Luxury spa relaxation rooms" },
+  { temp: 2700, name: "Warm Incandescent", business: "Family doctor waiting rooms" },
+  { temp: 3000, name: "Soft White", business: "Cozy bookstore reading nooks" },
+  { temp: 3200, name: "Halogen", business: "High-end jewelry stores" },
+  { temp: 3500, name: "Neutral White", business: "District 3 Center for Innovation's offices" },
+  { temp: 4000, name: "Cool White", business: "Modern art galleries" },
+  { temp: 4100, name: "Cool White Fluorescent", business: "Traditional office spaces" },
+  { temp: 4500, name: "Horizon Daylight", business: "Photography studios" },
+  { temp: 5000, name: "Daylight", business: "Graphic design agencies" },
+  { temp: 5500, name: "Mid-day Sunlight", business: "The largest naturally lit library in the western world" },
+  { temp: 6000, name: "Vertical Daylight", business: "Medical laboratories" },
+  { temp: 6500, name: "Full Spectrum Daylight", business: "Video production facilities" },
+  { temp: 7000, name: "Overcast Sky", business: "Dental clinics" },
+  { temp: 7500, name: "North Sky Daylight", business: "Visual inspection workstations" },
+  { temp: 8000, name: "Blue Sky", business: "Technology research labs" },
+  { temp: 9000, name: "Clear Blue Sky", business: "Electronic component assembly plants" },
+  { temp: 10000, name: "Heavily Overcast Sky", business: "Scientific visualization centers" },
+  { temp: 12000, name: "Deep Blue Sky", business: "Precision engineering facilities" }
+];
+
+// Create labels and colors for the chart
+const labels = colorTemps.map(item => `${item.name} (${item.temp}K)`);
+const backgroundColors = colorTemps.map(item => colorTempToRGB(item.temp));
+
+// Prepare data for Chart.js
+const data = {
+  labels: labels,
+  datasets: [
+    {
+      label: 'Color Temperature',
+      data: colorTemps.map(item => item.temp / 1000), // Scale down for better visualization
+      backgroundColor: backgroundColors,
+      borderColor: 'rgba(0, 0, 0, 0.1)',
+      borderWidth: 1
+    }
+  ]
+};
+
+// Make sure Chart is loaded before using it
+document.addEventListener('DOMContentLoaded', function() {
+  // Create the bar chart
+  const ctx = document.getElementById('tempChart').getContext('2d');
+  const config = {
+  type: 'bar',
+  data: data,
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Color Temperature (K/1000)'
+        }
+      },
+      y: {
+        ticks: {
+          font: {
+            size: 11
+          }
+        }
+      }
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: 'Color Temperature Spectrum for Different Lighting Applications',
+        font: {
+          size: 16
+        }
+      },
+      legend: {
+        display: false
+      },
+      tooltip: {
+        callbacks: {
+          afterLabel: function(context) {
+            const index = context.dataIndex;
+            return `Used in: ${colorTemps[index].business}`;
+          }
+        }
+      }
+    }
+  }
+};
+
+new Chart(ctx, config);
+
+  // Create individual color cards
+const cardsContainer = document.getElementById('colorCards');
+
+colorTemps.forEach(item => {
+  const color = colorTempToRGB(item.temp);
+  const textColor = item.temp > 5000 ? '#000' : '#fff';
+  
+  const card = document.createElement('div');
+  card.className = 'color-card';
+  
+  const swatch = document.createElement('div');
+  swatch.className = 'color-swatch';
+  swatch.style.backgroundColor = color;
+  
+  const swatchLabel = document.createElement('div');
+  swatchLabel.className = 'swatch-label';
+  swatchLabel.textContent = `${item.temp}K`;
+  swatch.appendChild(swatchLabel);
+  
+  const info = document.createElement('div');
+  info.className = 'color-info';
+  
+  const name = document.createElement('div');
+  name.className = 'color-name';
+  name.textContent = item.name;
+  
+  const business = document.createElement('div');
+  business.className = 'business-use';
+  business.textContent = `Used in: ${item.business}`;
+  
+  info.appendChild(name);
+  info.appendChild(business);
+  
+  card.appendChild(swatch);
+  card.appendChild(info);
+  
+  cardsContainer.appendChild(card);
+  });
+});
+</script>
+</body>
+</html>
