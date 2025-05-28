@@ -190,6 +190,7 @@ body {
 
 .navbar-toggler {
     margin-left: auto;
+    margin-right: -2.9rem;
 }
 
 .navbar-toggler:before {
