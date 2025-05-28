@@ -38,7 +38,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="theatre.html">ACTING</a>
                 </li>
-                <li class="nav-item"></li>
+                <li class="nav-item">
                     <a class="nav-link" href="blog.html">BLOG</a>
                 </li>
                 <li class="nav-item">
@@ -358,12 +358,12 @@
 
 
     <!-- load javascript after loading html -->
-    <script src="script/script.js"></script>
+    <script src="script.js"></script>
 
     <script>
     $(document).ready(function() {
         $(window).scroll(function() {
-            if ($(this).scrollTop() > 50) {  // if you've scrolled more than 50px
+            if ($(this).scrollTop() > 50) {  // if you've scrolled more than 250px
                 $('.navbarScroll').addClass('bg-scrolled');
             } else {
                 $('.navbarScroll').removeClass('bg-scrolled');
@@ -388,7 +388,7 @@
     ></script>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <script>
         $(document).ready(function() {
             let roles = ['coordinating film productions from script to screen', 'automating business processes to save time daily', 'managing high-stakes events with 200+ attendees', 'delivering on complex projects & operations','turning creative concepts into executable plans', 'leading teams through tight deadlines', 'crisis coordinating & long-term planning'];
